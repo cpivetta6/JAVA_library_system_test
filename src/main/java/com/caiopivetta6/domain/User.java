@@ -1,12 +1,15 @@
 package com.caiopivetta6.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,6 +26,9 @@ public class User implements Serializable {
 	private String phone;
 	private String email;
 	
+	@OneToMany(mappedBy = "user")
+	private List<BookLoan> loan = new ArrayList<>();
+	
 	public User() {
 		
 	}
@@ -33,6 +39,16 @@ public class User implements Serializable {
 		this.name = name;
 		this.phone = phone;
 		this.email = email;
+	}
+	
+	
+
+	public List<BookLoan> getLoan() {
+		return loan;
+	}
+
+	public void setLoan(List<BookLoan> loan) {
+		this.loan = loan;
 	}
 
 	public Integer getId() {
