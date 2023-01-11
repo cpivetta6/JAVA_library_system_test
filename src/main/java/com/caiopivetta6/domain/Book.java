@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,14 +36,17 @@ public class Book implements Serializable {
 	@JoinColumn(name = "genre_id")
 	private Genre genre;
 	
+	
 	@ManyToOne
 	@JoinColumn(name = "pubCompany_id")
 	private PubCompany pubCompany;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "collection_id")
 	private Collection collection;
 	
+	@JsonIgnore
 	@Lob
 	@OneToMany(mappedBy = "book")
 	private List<BookLoan> loan = new ArrayList<>();

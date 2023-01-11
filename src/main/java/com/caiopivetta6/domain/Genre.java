@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,6 +27,7 @@ public class Genre implements Serializable{
 	private Integer id;
 	private String description;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "genre")
 	private List<Book> books = new ArrayList<>();
 	
