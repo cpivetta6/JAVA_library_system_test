@@ -7,20 +7,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.caiopivetta6.domain.User;
-import com.caiopivetta6.services.UserService;
+import com.caiopivetta6.domain.BookLoan;
+import com.caiopivetta6.services.BookLoanService;
 
 @RestController
-@RequestMapping(value = "user")
+@RequestMapping(value = "bookloan")
 public class BookLoanResource {
 
 	@Autowired
-	private UserService service;
+	private BookLoanService service;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<User> findById (@PathVariable Integer id){
+	public ResponseEntity<BookLoan> findById (@PathVariable Integer id){
 		
-		User obj = service.find(id);
+		BookLoan obj = service.find(id);
 		
 		return ResponseEntity.ok().body(obj);
 		
